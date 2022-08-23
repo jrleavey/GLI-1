@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public class Target : MonoBehaviour
 {
-    [SerializeField]
-    private Transform endGoal;
+    private GameObject endGoal;
     public Transform[] points;
     private NavMeshAgent _agent;
     // Start is called before the first frame update
@@ -14,6 +13,7 @@ public class Target : MonoBehaviour
     private void Awake()
     {
          _agent = GetComponent<NavMeshAgent>();
+        endGoal = GameObject.Find("End Point");
     }
     void Start()
     {
@@ -28,6 +28,6 @@ public class Target : MonoBehaviour
 
     private void Movement()
     {
-        _agent.destination = endGoal.position;
+        _agent.destination = endGoal.transform.position;
     }
 }
